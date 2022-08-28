@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "/ViktorIukhlin/todos-list/static/css/main.f1cf5368.css",
+    "main.js": "/ViktorIukhlin/todos-list/static/js/main.a1b222c3.js",
+    "static/media/roboto-v30-latin-300.svg": "/ViktorIukhlin/todos-list/static/media/roboto-v30-latin-300.991f795de66ec216a1f8.svg",
+    "static/media/roboto-v30-latin-700.svg": "/ViktorIukhlin/todos-list/static/media/roboto-v30-latin-700.9cc0e6124996a8989420.svg",
+    "static/media/roboto-v30-latin-regular.svg": "/ViktorIukhlin/todos-list/static/media/roboto-v30-latin-regular.4f862c8ba4ed785461ee.svg",
+    "static/media/roboto-v30-latin-500.svg": "/ViktorIukhlin/todos-list/static/media/roboto-v30-latin-500.9024e4c16d0f988f4848.svg",
+    "static/media/roboto-v30-latin-900.svg": "/ViktorIukhlin/todos-list/static/media/roboto-v30-latin-900.117624e99e0b7e9ded57.svg",
+    "static/media/roboto-v30-latin-500.ttf": "/ViktorIukhlin/todos-list/static/media/roboto-v30-latin-500.e65e3463169db5a1a55f.ttf",
+    "static/media/roboto-v30-latin-300.ttf": "/ViktorIukhlin/todos-list/static/media/roboto-v30-latin-300.beded7bd0c00bf9099af.ttf",
+    "static/media/roboto-v30-latin-regular.ttf": "/ViktorIukhlin/todos-list/static/media/roboto-v30-latin-regular.6b1ef4e4ab8eafee13c1.ttf",
+    "static/media/roboto-v30-latin-700.ttf": "/ViktorIukhlin/todos-list/static/media/roboto-v30-latin-700.5e5b76f0fae3cf2ef7cc.ttf",
+    "static/media/roboto-v30-latin-900.ttf": "/ViktorIukhlin/todos-list/static/media/roboto-v30-latin-900.271e40fc3db4cfcf9121.ttf",
+    "static/media/roboto-v30-latin-500.woff": "/ViktorIukhlin/todos-list/static/media/roboto-v30-latin-500.48af7707fe9e6494d6a5.woff",
+    "static/media/roboto-v30-latin-900.woff": "/ViktorIukhlin/todos-list/static/media/roboto-v30-latin-900.f5677eb229af2e6c8fe1.woff",
+    "static/media/roboto-v30-latin-300.woff": "/ViktorIukhlin/todos-list/static/media/roboto-v30-latin-300.c2f7ab22cb9cbd074c3a.woff",
+    "static/media/roboto-v30-latin-700.woff": "/ViktorIukhlin/todos-list/static/media/roboto-v30-latin-700.77ecb942e56f9b036426.woff",
+    "static/media/roboto-v30-latin-regular.woff": "/ViktorIukhlin/todos-list/static/media/roboto-v30-latin-regular.f1e2a76794cb86b2aa8e.woff",
+    "static/media/roboto-v30-latin-500.eot": "/ViktorIukhlin/todos-list/static/media/roboto-v30-latin-500.1e420a026c238f3ff0e6.eot",
+    "static/media/roboto-v30-latin-300.eot": "/ViktorIukhlin/todos-list/static/media/roboto-v30-latin-300.76fc10943a0d75471e44.eot",
+    "static/media/roboto-v30-latin-regular.eot": "/ViktorIukhlin/todos-list/static/media/roboto-v30-latin-regular.e2f36b803fec4bdcd1bc.eot",
+    "static/media/roboto-v30-latin-900.eot": "/ViktorIukhlin/todos-list/static/media/roboto-v30-latin-900.c5e4d9e31a68cb65a852.eot",
+    "static/media/roboto-v30-latin-700.eot": "/ViktorIukhlin/todos-list/static/media/roboto-v30-latin-700.7d4f7f5fd90497043541.eot",
+    "static/media/roboto-v30-latin-500.woff2": "/ViktorIukhlin/todos-list/static/media/roboto-v30-latin-500.f25d774ecfe0996f8eb5.woff2",
+    "static/media/roboto-v30-latin-700.woff2": "/ViktorIukhlin/todos-list/static/media/roboto-v30-latin-700.227c93190fe7f82de3f8.woff2",
+    "static/media/roboto-v30-latin-900.woff2": "/ViktorIukhlin/todos-list/static/media/roboto-v30-latin-900.2e8becfcae330421664b.woff2",
+    "static/media/roboto-v30-latin-regular.woff2": "/ViktorIukhlin/todos-list/static/media/roboto-v30-latin-regular.b009a76ad6afe4ebd301.woff2",
+    "static/media/roboto-v30-latin-300.woff2": "/ViktorIukhlin/todos-list/static/media/roboto-v30-latin-300.c48fb6765a9fcb00b330.woff2",
+    "index.html": "/ViktorIukhlin/todos-list/index.html",
+    "main.f1cf5368.css.map": "/ViktorIukhlin/todos-list/static/css/main.f1cf5368.css.map",
+    "main.a1b222c3.js.map": "/ViktorIukhlin/todos-list/static/js/main.a1b222c3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f1cf5368.css",
+    "static/js/main.a1b222c3.js"
+  ]
+}
