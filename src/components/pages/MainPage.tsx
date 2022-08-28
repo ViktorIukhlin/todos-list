@@ -21,18 +21,28 @@ const MainPage = ({ loading, error, data, refetch }: Props): JSX.Element => {
     const [deleteTodo] = useMutation(DELETE_TODO);
 
     const getSortedItemsByStatus = (status: "Done" | "To-do"): void => {
-        const newTodosLimit = todosLimit + 20;
+        globalCache.modify({
+            fields: {
+                todos(_, { readField }) {
+                    const sortedTodos = [...(data?.todos.data as [])];
 
-        refetch({
-            options: {
-                paginate: {
-                    page: 1,
-                    limit: newTodosLimit,
+                    sortedTodos.sort(
+                        (todoRefa: Reference, todoRefb: Reference) => {
+                            const a = readField("completed", todoRefa) ? 1 : 2;
+                            const b = readField("completed", todoRefb) ? 1 : 2;
+
+                            if (status === "Done") {
+                                return a - b;
+                            } else {
+                                return b - a;
+                            }
+                        }
+                    );
+
+                    return sortedTodos;
                 },
             },
         });
-
-        setTodosLimit(newTodosLimit);
     };
 
     const handleUpdate = (): void => {
