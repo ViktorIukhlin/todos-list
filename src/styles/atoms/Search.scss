@@ -1,0 +1,24 @@
+.search {
+    display: inline-flex;
+    align-items: center;
+    height: 36px;
+    min-width: 270px;
+    border: 1px solid #cccedd;
+    border-radius: 6px;
+    padding-left: 8px;
+    input {
+        border: none;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 18px;
+        margin-left: 4px;
+        width: 100%;
+        &:focus {
+            outline: none;
+        }
+    }
+
+    path {
+        fill: #1a75ff;
+    }
+}

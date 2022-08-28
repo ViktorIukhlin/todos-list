@@ -1,0 +1,19 @@
+.status-flag {
+    width: 80px;
+    height: 21px;
+    text-align: center;
+    padding: 3px 8px;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 15px;
+    border-radius: 3px;
+
+    &.done {
+        color: #3bb900;
+        background-color: #ecfbe6;
+    }
+    &.to-do {
+        color: #f49200;
+        background-color: #fff6e8;
+    }
+}
