@@ -1,8 +1,8 @@
 import { useQuery } from "@apollo/client/react/hooks/useQuery";
 import { HashRouter, Route, Routes } from "react-router-dom";
-import { GET_TODOS, TodoData, TodoVars } from "./lib/api";
+import { GET_TODOS } from "./lib/api";
+import { TodoData, TodoVars } from "./lib/interfaces";
 import routes, { rout } from "./routes";
-import "./styles/index.scss";
 
 const options = {
     paginate: {
@@ -20,8 +20,6 @@ function App() {
             },
         }
     );
-
-    console.log("data", data);
 
     return (
         <HashRouter>

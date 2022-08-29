@@ -1,0 +1,28 @@
+.icons-container {
+    display: flex;
+    gap: 30;
+}
+
+.icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 30px;
+    font-family: sans-serif;
+}
+
+.green {
+    fill: #36aa00;
+}
+
+.orange {
+    fill: #b86f01;
+}
+
+.red {
+    fill: #ff1a43;
+}
+
+.blue {
+    fill: #1a75ff;
+}

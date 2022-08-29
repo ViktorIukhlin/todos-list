@@ -1,53 +1,36 @@
-// Icon.stories
-
 import { Meta, Story } from "@storybook/react";
 
 import Icon, { IconProps } from "../components/atoms/Icon";
 import ICONS, { SupportedIcon } from "../components/atoms/Icon/data";
+import "./Icon.scss";
 
 export default {
-    title: "UI/Icon",
+    title: "Atoms/Icon",
     component: Icon,
 } as Meta;
 
 const Template: Story<IconProps> = (args) => <Icon {...args} />;
 
-export const Demo = Template.bind({});
-Demo.argTypes = {
+export const OneIcon = Template.bind({});
+OneIcon.argTypes = {
     className: {
-        options: ["1", "2", "3"],
+        options: ["green", "orange", "red", "blue"],
         control: { type: "radio" },
     },
 };
-Demo.args = {
+
+OneIcon.args = {
     icon: "placeholder",
-    size: 24,
-    className: "",
+    size: 30,
 };
 
 export const AllSupportedIcons: Story<IconProps> = (args) => (
-    <div>
+    <div className="icons-container">
         {Object.keys(ICONS).map((icon) => (
-            <div className="firstclass" key={icon}>
-                <Icon
-                    {...args}
-                    icon={icon as SupportedIcon}
-                    className="mx-auto"
-                />
-                <h5 className="mt-8 text-sm16">{icon}</h5>
+            <div key={icon} className="icon">
+                <Icon {...args} icon={icon as SupportedIcon} />
+                <h5>{icon}</h5>
             </div>
         ))}
     </div>
 );
-AllSupportedIcons.argTypes = {
-    icon: {
-        table: {
-            disable: true,
-        },
-    },
-    className: {
-        table: {
-            disable: true,
-        },
-    },
-};

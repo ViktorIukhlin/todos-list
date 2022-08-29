@@ -5,6 +5,7 @@ import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { DELETE_TODO } from "../../lib/api";
 import { useLazyLoading } from "../../lib/hooks/useLazyLoading";
+import { Todo } from "../../lib/interfaces";
 import { Props } from "../../routes";
 import { Button } from "../atoms/Button";
 import { Table } from "../organisms/Table";
@@ -40,6 +41,26 @@ const MainPage = ({ loading, error, data, refetch }: Props): JSX.Element => {
                     );
 
                     return sortedTodos;
+                },
+            },
+        });
+    };
+
+    const handleStatus = (id: number): void => {
+        globalCache.modify({
+            fields: {
+                todos() {
+                    const Todos: Todo[] | undefined = data?.todos.data.map(
+                        (item) => {
+                            if (item.id === id) {
+                                return { ...item, completed: true };
+                            }
+
+                            return item;
+                        }
+                    );
+
+                    return Todos;
                 },
             },
         });
@@ -132,6 +153,7 @@ const MainPage = ({ loading, error, data, refetch }: Props): JSX.Element => {
                     onSearch={handleSearch}
                     onDelete={handleDelete}
                     onNavigate={navigate}
+                    onStatus={handleStatus}
                 />
             </div>
         </div>

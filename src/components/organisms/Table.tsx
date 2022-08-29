@@ -1,6 +1,6 @@
 import { ApolloError } from "@apollo/client/errors";
 import { NavigateFunction } from "react-router-dom";
-import { Todo } from "../../lib/api";
+import { Todo } from "../../lib/interfaces";
 import { Button } from "../atoms/Button";
 import { Search } from "../atoms/Search";
 import { StatusFlag } from "../atoms/StatusFlag";
@@ -16,6 +16,7 @@ interface TableProps {
     onSearch(searchText: string): void;
     onDelete(id: number): void;
     onNavigate: NavigateFunction;
+    onStatus(id: number): void;
 }
 
 export const Table = ({
@@ -28,6 +29,7 @@ export const Table = ({
     onSearch,
     onDelete,
     onNavigate,
+    onStatus,
     className,
 }: TableProps): JSX.Element => {
     return (
@@ -91,7 +93,7 @@ export const Table = ({
                                 <div className="table__actions-box">
                                     {!completed && (
                                         <Button
-                                            onClick={() => {}}
+                                            onClick={() => onStatus(id)}
                                             icon="done"
                                             color="success"
                                         />

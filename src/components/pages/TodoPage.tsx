@@ -1,16 +1,26 @@
+import { useApolloClient } from "@apollo/client/react/hooks/useApolloClient";
 import { useMutation } from "@apollo/client/react/hooks/useMutation";
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { CREATE_TODO, UPDATE_TODO } from "../../lib/api";
+import { Todo } from "../../lib/interfaces";
+import { Props } from "../../routes";
 import { Button } from "../atoms/Button";
 import { Input } from "../atoms/Input";
 
-const TodoPage = (): JSX.Element => {
+const TodoPage = ({ data }: Props): JSX.Element => {
     let location = useLocation();
     const todoId = location.search.slice(4);
 
+    let todo: Todo | null | undefined = null;
+    if (todoId) {
+        todo = data?.todos.data.find((todo) => +todo.id === +todoId);
+    }
+
+    const globalCache = useApolloClient().cache;
+
     const [newTodo, setNewTodo] = useState({
-        title: "",
+        title: todo ? todo.title : "",
     });
 
     const [createTodo] = useMutation(CREATE_TODO);
@@ -24,28 +34,67 @@ const TodoPage = (): JSX.Element => {
     };
 
     const createHandler = () => {
+        if (todo) {
+            return updateTodo({
+                variables: {
+                    id: todo.id,
+                    input: { title: newTodo.title, completed: todo.completed },
+                },
+            })
+                .then((res) => {
+                    globalCache.modify({
+                        fields: {
+                            todos() {
+                                const Todos: Todo[] | undefined =
+                                    data?.todos.data.map((item) => {
+                                        if (item.id === todo?.id) {
+                                            return { ...item, ...newTodo };
+                                        }
+
+                                        return item;
+                                    });
+
+                                return Todos;
+                            },
+                        },
+                    });
+                    navigate("/");
+                })
+                .catch(() => {
+                    console.log("ERROR");
+                });
+        }
+
         createTodo({
             variables: { input: { title: newTodo.title, completed: false } },
-        }).then((res) => {
-            if (res.data.createTodo.title) {
-                navigate("/");
-            } else {
-                navigate("/");
-                console.log("ERROR");
-            }
-        });
-    };
+        })
+            .then((res) => {
+                globalCache.modify({
+                    fields: {
+                        todos() {
+                            let Todos: any = [...(data?.todos.data as [])];
 
-    const handleChange = (id: number, title: string, completed: boolean) => {
-        updateTodo({
-            variables: {
-                id: id,
-                input: {
-                    title: "",
-                    completed: completed,
-                },
-            },
-        });
+                            Todos?.unshift({
+                                id: Todos.length + 1,
+                                completed: res.data.createTodo.completed,
+                                title: res.data.createTodo.title,
+                                user: {
+                                    id: 999,
+                                    name: "User",
+                                },
+                                __typename: "Todo",
+                            });
+
+                            return Todos;
+                        },
+                    },
+                });
+                navigate("/");
+            })
+            .catch(() => {
+                console.log("ERROR");
+                navigate("/");
+            });
     };
 
     return (
@@ -53,7 +102,7 @@ const TodoPage = (): JSX.Element => {
             <div className="todo-page__actions-container">
                 <div className="todo-page__description-container">
                     <h1 className="todo-page__title">
-                        Todo{todoId && " " + todoId} page
+                        Todo {todo ? todo.id : "page"}
                     </h1>
                     <span className="todo-page__subtext">
                         Please fill in all fields to create todo.

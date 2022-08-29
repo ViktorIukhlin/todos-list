@@ -4,7 +4,7 @@ import { FC } from "react";
 
 import MainPage from "./components/pages/MainPage";
 import TodoPage from "./components/pages/TodoPage";
-import { TodoData, TodoVars } from "./lib/api";
+import { TodoData, TodoVars } from "./lib/interfaces";
 
 export interface Props {
     loading: boolean;

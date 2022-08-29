@@ -2,7 +2,7 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import "./index.scss";
+import "./styles/index.scss";
 
 const client = new ApolloClient({
     uri: "https://graphqlzero.almansi.me/api",

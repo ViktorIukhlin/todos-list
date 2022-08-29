@@ -1,8 +1,10 @@
 import Icon, { SupportedIcon } from "./Icon";
 
-interface ButtonProps {
+type Colors = "primary" | "success" | "warning" | "danger";
+
+export interface ButtonProps {
     text?: string;
-    color?: string;
+    color?: Colors;
     icon?: SupportedIcon;
     onClick(): void;
     disabled?: boolean;
@@ -11,7 +13,7 @@ interface ButtonProps {
 
 export const Button = ({
     text,
-    color,
+    color = "primary",
     icon,
     onClick,
     disabled,
