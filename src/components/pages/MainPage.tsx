@@ -99,8 +99,8 @@ const MainPage = ({ loading, error, data, refetch }: Props): JSX.Element => {
     const handleDelete = (id: number): void => {
         deleteTodo({
             variables: { id },
-        }).then((res) => {
-            if (res.data.deleteTodo) {
+        })
+            .then((res) => {
                 globalCache.modify({
                     fields: {
                         todos(existingTodoRefs, { readField }) {
@@ -111,10 +111,10 @@ const MainPage = ({ loading, error, data, refetch }: Props): JSX.Element => {
                         },
                     },
                 });
-            } else {
+            })
+            .catch(() => {
                 console.log("ERROR");
-            }
-        });
+            });
     };
 
     useLazyLoading({
