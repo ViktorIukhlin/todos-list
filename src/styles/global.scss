@@ -22,6 +22,16 @@ a {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+strong {
+    background-color: rgb(255, 254, 169);
+}
+
 .fill-current {
     fill: currentColor;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

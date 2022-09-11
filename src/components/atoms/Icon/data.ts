@@ -1,4 +1,5 @@
 import ArrowUp from "./icons/ArrowUp";
+import Close from "./icons/Close";
 import Delete from "./icons/Delete";
 import Done from "./icons/Done";
 import Edit from "./icons/Edit";
@@ -13,6 +14,7 @@ const ICONS = {
     plus: Plus,
     done: Done,
     search: Search,
+    close: Close,
     "arrow-up": ArrowUp,
 };
 

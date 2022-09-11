@@ -1,0 +1,33 @@
+.tabs-bar {
+    &__container {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        height: 55px;
+        background-color: #f6f8fb;
+        padding: 0 16px;
+        border-radius: 6px;
+        position: relative;
+    }
+
+    &__tab {
+        position: relative;
+        width: 120px;
+        text-align: center;
+        cursor: pointer;
+        transition: 0.4s;
+
+        &.active {
+            color: white;
+        }
+    }
+
+    &__hover-box {
+        position: absolute;
+        top: 9px;
+        height: 37px;
+        width: 120px;
+        border-radius: 6px;
+        transition: 0.4s;
+    }
+}

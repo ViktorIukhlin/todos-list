@@ -1,0 +1,35 @@
+.skeleton {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    border-radius: 4px;
+    height: 15px;
+    margin: 13px 0;
+    width: 100%;
+
+    &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        left: -150px;
+        top: 0;
+        height: 100%;
+        width: 150px;
+        background: linear-gradient(
+            to right,
+            transparent 0%,
+            #dce0e1 50%,
+            transparent 100%
+        );
+        animation: load 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+}
+
+@keyframes load {
+    from {
+        left: -150px;
+    }
+    to {
+        left: 100%;
+    }
+}

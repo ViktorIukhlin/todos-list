@@ -21,7 +21,7 @@
         }
     }
 
-    &__text {
+    &.margin {
         margin-left: 6px;
     }
 
@@ -30,6 +30,25 @@
     }
 
     // Color types
+    &.not-active {
+        background-color: #8a8da0;
+        color: #ffffff;
+        cursor: pointer;
+
+        & path {
+            fill: #ffffff;
+        }
+
+        &:hover {
+            box-shadow: 0px 1px 4px rgba(17, 53, 0, 0.25),
+                0px 3px 12px 2px rgba(17, 53, 0, 0.35);
+        }
+
+        &:active {
+            background-color: #5d6387;
+        }
+    }
+
     &.success {
         background-color: #44d600;
         color: #ffffff;

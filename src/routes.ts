@@ -1,36 +1,20 @@
-import { ApolloQueryResult } from "@apollo/client/core/types";
-import { ApolloError } from "@apollo/client/errors";
 import { FC } from "react";
 
 import MainPage from "./components/pages/MainPage";
-import TodoPage from "./components/pages/TodoPage";
-import { TodoData, TodoVars } from "./lib/interfaces";
 
-export interface Props {
-    loading: boolean;
-    error: ApolloError | undefined;
-    data: TodoData | undefined;
-    refetch: (
-        variables?: Partial<TodoVars> | undefined
-    ) => Promise<ApolloQueryResult<TodoData>>;
-}
+export interface ComponentProps {}
 
-export interface rout {
+export interface Rout {
     path: string;
     name: string;
-    Component: FC<Props>;
+    Component: FC<ComponentProps>;
 }
 
-const routes: rout[] = [
+const routes: Rout[] = [
     {
         path: "/",
         name: "Main",
         Component: MainPage,
-    },
-    {
-        path: "/todo",
-        name: "Main",
-        Component: TodoPage,
     },
 ];
 

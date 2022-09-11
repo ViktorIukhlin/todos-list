@@ -1,6 +1,6 @@
 import Icon, { SupportedIcon } from "./Icon";
 
-type Colors = "primary" | "success" | "warning" | "danger";
+type Colors = "primary" | "success" | "warning" | "danger" | "not-active";
 
 export interface ButtonProps {
     text?: string;
@@ -24,7 +24,9 @@ export const Button = ({
         className={`button ${text && "type-text"} ${color} ${className}`}
         disabled={disabled}
     >
-        {<Icon icon={icon as SupportedIcon} size={14} />}
-        {text && <div className="button__text">{text}</div>}
+        {icon && <Icon icon={icon as SupportedIcon} size={14} />}
+        {text && (
+            <div className={`button__text ${icon && "margin"}`}>{text}</div>
+        )}
     </button>
 );

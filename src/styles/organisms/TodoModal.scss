@@ -1,0 +1,40 @@
+.todoModal {
+    gap: 0px;
+
+    &__inputs-box {
+        display: flex;
+    }
+
+    &__left-content {
+        width: 80%;
+    }
+
+    &__right-content {
+        width: 20%;
+        height: 100%;
+        padding-left: 16px;
+    }
+
+    &__preview {
+        .input {
+            width: 100%;
+        }
+    }
+
+    &__label {
+        text-align: start;
+        margin-bottom: 2px;
+    }
+
+    &__status-actions {
+        display: flex;
+        gap: 8px;
+    }
+
+    &__error {
+        color: rgb(247, 85, 85);
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16px;
+    }
+}

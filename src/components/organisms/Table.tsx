@@ -1,112 +1,104 @@
 import { ApolloError } from "@apollo/client/errors";
-import { NavigateFunction } from "react-router-dom";
+import ReactMarkdown from "react-markdown";
 import { Todo } from "../../lib/interfaces";
 import { Button } from "../atoms/Button";
-import { Search } from "../atoms/Search";
+import Skeleton from "../atoms/Skeleton";
 import { StatusFlag } from "../atoms/StatusFlag";
 
 interface TableProps {
     data: Todo[] | undefined;
     loading: boolean;
     error?: ApolloError;
-    onSort(status: "Done" | "To-do"): void;
     itemsRef: any;
     className?: string;
-    searchText: string;
-    onSearch(searchText: string): void;
-    onDelete(id: number): void;
-    onNavigate: NavigateFunction;
-    onStatus(id: number): void;
+    onDelete(todo: Todo): void;
+    onEdit(todo: Todo): void;
+    onStatus(todo: Todo): void;
+    actionsContent: JSX.Element;
 }
+
+const tableSkeletons = Array.from({ length: 20 }, (_, i) => i);
 
 export const Table = ({
     data,
     loading,
     error,
-    onSort,
     itemsRef,
-    searchText,
-    onSearch,
     onDelete,
-    onNavigate,
+    onEdit,
     onStatus,
     className,
+    actionsContent,
 }: TableProps): JSX.Element => {
     return (
         <table className={`table ${className}`}>
             <thead className="table__head">
                 <th className="table__actions-bar" colSpan={6}>
-                    <Search
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                            onSearch(e.target.value)
-                        }
-                        value={searchText}
-                        placeholder="Search by title or id..."
-                    />
+                    {actionsContent}
                 </th>
 
                 <tr>
                     <th>ID</th>
                     <th>TITLE</th>
                     <th>AUTHOR</th>
-                    <th>
-                        <div className="table__actions-box">
-                            <Button
-                                onClick={() => onSort("Done")}
-                                icon="arrow-up"
-                                color="success"
-                                className="table__filter-buttons"
-                            />
-                            <Button
-                                onClick={() => onSort("To-do")}
-                                icon="arrow-up"
-                                color="warning"
-                                className="table__filter-buttons"
-                            />
-                            STATUS
-                        </div>
-                    </th>
+                    <th>STATUS</th>
                     <th>ACTIONS</th>
                 </tr>
             </thead>
             <tbody ref={itemsRef}>
                 {loading ? (
-                    <tr>
-                        <td>Loading...</td>
-                    </tr>
+                    tableSkeletons.map((skeleton) => (
+                        <tr key={skeleton}>
+                            <td>
+                                <Skeleton />
+                            </td>
+                            <td>
+                                <Skeleton />
+                            </td>
+                            <td>
+                                <Skeleton />
+                            </td>
+                            <td>
+                                <Skeleton />
+                            </td>
+                            <td>
+                                <Skeleton />
+                            </td>
+                        </tr>
+                    ))
                 ) : error ? (
                     <tr>
                         <td>Error...</td>
                     </tr>
                 ) : data ? (
-                    data.map(({ id, title, completed, user }) => (
-                        <tr key={id} className="table__field">
-                            <td>{id}</td>
-                            <td>{title}</td>
-                            <td>{user.name}</td>
+                    data.map((todo) => (
+                        <tr key={todo.id} className="table__field">
+                            <td>{todo.id}</td>
+                            <td>
+                                <ReactMarkdown>{todo.title}</ReactMarkdown>
+                            </td>
+                            <td>{todo.user.name}</td>
                             <td>
                                 <div className="table__items-right">
-                                    <StatusFlag done={completed} />
+                                    <StatusFlag done={todo.completed} />
                                 </div>
                             </td>
                             <td>
                                 <div className="table__actions-box">
-                                    {!completed && (
+                                    {!todo.completed && (
                                         <Button
-                                            onClick={() => onStatus(id)}
+                                            onClick={() => onStatus(todo)}
                                             icon="done"
                                             color="success"
                                         />
                                     )}
                                     <Button
-                                        onClick={() =>
-                                            onNavigate(`/todo?id=${id}`)
-                                        }
+                                        onClick={() => onEdit(todo)}
                                         icon="edit"
                                         color="primary"
                                     />
                                     <Button
-                                        onClick={() => onDelete(id)}
+                                        onClick={() => onDelete(todo)}
                                         icon="delete"
                                         color="danger"
                                     />
