@@ -92,7 +92,7 @@ const MainPage = (): JSX.Element => {
     const handleDelete = (item: Todo): void => {
         setNotification({
             title: "Deleting The Todo",
-            message: `Do you really want to delete "${item.title}" Todo?`,
+            message: `Do you really want to delete _"${item.title}"_ Todo?`,
             approveText: "Delete",
             onClose: () => {
                 setNotification(null);

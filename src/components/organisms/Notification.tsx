@@ -1,3 +1,4 @@
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { Button } from "../atoms/Button";
 import Modal from "../atoms/Modal";
 
@@ -20,7 +21,7 @@ const Notification = ({
         <Modal.Wrapper>
             <Modal.Header title={title} />
             <Modal.Body className="notification__message flex-center">
-                {message}
+                <ReactMarkdown>{message}</ReactMarkdown>
             </Modal.Body>
             <Modal.Footer>
                 <Button
